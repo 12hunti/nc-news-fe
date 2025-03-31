@@ -10,14 +10,32 @@
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+  position: absolute;
+  top: 8px;
+  left: 16px;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #01b0c7aa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.avatar {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+.avatar:hover {
+  filter: drop-shadow(0 0 2em #01b0c7aa);
+}
+.avatar.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -37,6 +55,21 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+header {
+  position: sticky;
+  top: 0;
+  max-height: fit-content;
+  background-color: white;
+}
+
+.nav{
+  display: inline;
+  list-style-type: none;
+  margin-right: 25px;
+  width: 1000px;
+}
+
+.hero-image{
+  max-width: 100%;
+  max-height: auto;
 }
