@@ -1,3 +1,7 @@
+function Article(){}
+
+export default Article
+
 {/* 
      const [vote, setVote] = useState(0)
     <div className="card">
