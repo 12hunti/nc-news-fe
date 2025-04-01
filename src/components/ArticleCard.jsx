@@ -1,5 +1,8 @@
+import { Link } from "react-router";
+
 function ArticleCard({ article }) {
   return (
+    <Link to={`/articles/${article.article_id}`}>
     <li>
       <img
         className="article-image"
@@ -11,6 +14,7 @@ function ArticleCard({ article }) {
       <p>Topic: {article.topic}</p>
       <p>Votes: {article.votes}</p>
     </li>
+    </Link>
   );
 }
 

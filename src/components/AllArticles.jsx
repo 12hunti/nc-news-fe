@@ -3,27 +3,10 @@ import { getArticles } from "../api";
 import Loading from "./Loading";
 import Error from "./Error";
 import ArticleCard from "./ArticleCard";
+import useApiRequest from "../hooks/useApiRequest";
 
 function AllArticles() {
-  const [articles, setArticles] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setError(false);
-    getArticles()
-      .then(({ articles }) => {
-        setArticles(articles);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError({status:404, msg: 'Failed to load articles'});
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  },[])
+  const { data: articles, isLoading, error } = useApiRequest(getArticles, "Failed to load articles");
 
   if (isLoading) {
     return <Loading />;

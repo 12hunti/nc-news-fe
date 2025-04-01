@@ -10,8 +10,8 @@ export const getArticles = () => {
   });
 };
 
-export const getArticle = () => {
-    return api.get("articles/:article_id").then(({data}) => {
+export const getArticle = (article_id) => {
+    return api.get(`/articles/${article_id}`).then(({data}) => {
         return data
     })
 }

@@ -1,28 +1,18 @@
-import { useEffect, useState } from "react"
 import { getArticle } from "../api";
 import Loading from "./Loading";
 import Error from "./Error";
+import { useParams } from "react-router";
+import useApiRequest from "../hooks/useApiRequest";
 
-function Article(){
-  const [article, setArticle] = useState(null)
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+function Article() {
+  const params = useParams();
+  const { article_id } = useParams();
 
-  useEffect(() => {
-    setIsLoading(true);
-    setError(false);
-    getArticle()
-      .then((data) => {
-        console.log(data)
-      })
-      .catch((err) => {
-        console.log(err);
-        setError({status:404, msg: 'Failed to load the article'});
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  },[])
+  const {
+    data: article,
+    isLoading,
+    error,
+  } = useApiRequest(getArticle, "Failed to load the article", article_id);
 
   if (isLoading) {
     return <Loading />;
@@ -32,22 +22,34 @@ function Article(){
     return <Error error={error} />;
   }
 
-  return(
-    <div>
-      <h2>article will go here</h2>
-    </div>
-  )
+  if (!article) {
+    return <Loading />;
+  }
 
+  const { article_img_url, title, author, topic, votes, body, created_at } =
+    article.article;
+
+  return (
+    <main>
+      <h2>{title}</h2>
+      <img className="article-image" src={article_img_url} alt={title} />
+      <div className="article-meta">
+        <p>by {author}</p>
+        <p>{topic}</p>
+        <p className="votes">Votes: {votes}</p>
+      </div>
+      <p className="article-meta">
+        {new Date(article.article.created_at).toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })}
+      </p>
+
+      <br />
+      <p className="article-body">{body}</p>
+    </main>
+  );
 }
 
-
-export default Article
-
-{/* 
-     const [vote, setVote] = useState(0)
-    <div className="card">
-<button onClick={() => setCount((vote) => vote + 1)}>
-  vote is {vote}
-</button>
-
-</div> */}
+export default Article;
