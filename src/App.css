@@ -96,6 +96,10 @@ header {
   text-align: left;
 }
 
+.vote-button{
+  background-color: rgba(199, 239, 239, 0.851);
+}
+
 .button-img{
   max-height: 15px;
 }
