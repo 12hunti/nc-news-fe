@@ -46,6 +46,9 @@ function Article() {
           year: "numeric",
         })}
       </p>
+      <button type="button" className="button"><img className="button-img" src="../../src/assets/upArrow.png" alt="up Arrow" /></button>
+      <button type="button" className="button"><img className="button-img" src="../../src/assets/downArrow.png" alt="up Arrow" /></button>
+     
 
       <br />
       <p className="article-body">{body}</p>

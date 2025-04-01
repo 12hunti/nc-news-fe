@@ -96,3 +96,6 @@ header {
   text-align: left;
 }
 
+.button-img{
+  max-height: 15px;
+}
