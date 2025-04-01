@@ -3,6 +3,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 import { useParams } from "react-router";
 import useApiRequest from "../hooks/useApiRequest";
+import Collapsible from "./Collapsible";
 
 function CommentCard() {
   const { article_id } = useParams();
@@ -25,10 +26,9 @@ function CommentCard() {
     return <Loading />;
   }
 
-  console.log(comments.comments, "comments in CommentCard");
-
   return (
     <div>
+        <Collapsible contentDescriptor={'Comments'}>
       <h3>Comments</h3>
       {comments.comments.map((comment) => {
         return (
@@ -46,6 +46,7 @@ function CommentCard() {
           </li>
         );
       })}
+      </Collapsible>
     </div>
   );
 }
