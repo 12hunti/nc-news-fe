@@ -35,7 +35,6 @@ function AllArticles() {
 
   return (
     <div className="article-list">
-      {/* <h2>Article List</h2> */}
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}

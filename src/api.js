@@ -10,4 +10,10 @@ export const getArticles = () => {
   });
 };
 
+export const getArticle = () => {
+    return api.get("articles/:article_id").then(({data}) => {
+        return data
+    })
+}
+
 export default api;
