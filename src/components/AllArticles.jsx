@@ -18,7 +18,7 @@ function AllArticles() {
       })
       .catch((err) => {
         console.log(err);
-        setError(true);
+        setError({status:404, msg: 'Failed to load articles'});
       })
       .finally(() => {
         setIsLoading(false);
@@ -30,7 +30,7 @@ function AllArticles() {
   }
 
   if (error) {
-    return <Error />;
+    return <Error error={error} />;
   }
 
   return (
