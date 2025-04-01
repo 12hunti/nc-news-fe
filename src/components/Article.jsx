@@ -50,7 +50,7 @@ function Article() {
       <br />
       <p className="article-body">{body}</p>
       </section>
-      <section>
+      <section className="comment-list">
         <Comments/>
       </section>
     </main>

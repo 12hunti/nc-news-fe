@@ -32,10 +32,10 @@ function CommentCard() {
       <h3>Comments</h3>
       {comments.comments.map((comment) => {
         return (
-          <li key={comment.comment_id}>
-            <p>{comment.body}</p>
+          <li key={comment.comment_id} >
+            <p className="comment-body">{comment.body}</p>
+            <div className="comment-meta">
             <p>by {comment.author}</p>
-            <p>Votes {comment.votes}</p>
             <p>
               {new Date(comment.created_at).toLocaleDateString("en-GB", {
                 day: "numeric",
@@ -43,6 +43,8 @@ function CommentCard() {
                 year: "numeric",
               })}
             </p>
+            <p className="votes" >Votes: {comment.votes}</p>
+            </div>
           </li>
         );
       })}

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 function Collapsible ({children, contentDescriptor}){
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(false)
 
     const toggleView = () => {
         setVisible(!visible)
