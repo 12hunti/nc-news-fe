@@ -74,3 +74,17 @@ header {
   border-radius: 10px;
   text-align: center;
 }
+
+.article-meta {
+  display:flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.article-meta .votes {
+  font-weight: bold;
+}
+
+.article-body {
+  text-align: left;
+}
