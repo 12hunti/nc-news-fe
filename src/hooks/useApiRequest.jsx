@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
-
 const useApiRequest = (apiFunction, errorMessage, ...args) => {
-    const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
   useEffect(() => {
     setIsLoading(true);
     setError(null);
@@ -23,8 +21,7 @@ const useApiRequest = (apiFunction, errorMessage, ...args) => {
       });
   }, [...args]);
 
-  return {data, isLoading, error}
+  return { data, isLoading, error };
+};
 
-}
-
-export default useApiRequest
+export default useApiRequest;

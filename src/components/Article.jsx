@@ -3,9 +3,9 @@ import Loading from "./Loading";
 import Error from "./Error";
 import { useParams } from "react-router";
 import useApiRequest from "../hooks/useApiRequest";
+import Comments from "./Comments";
 
 function Article() {
-  const params = useParams();
   const { article_id } = useParams();
 
   const {
@@ -26,11 +26,12 @@ function Article() {
     return <Loading />;
   }
 
-  const { article_img_url, title, author, topic, votes, body, created_at } =
+  const { article_img_url, title, author, topic, votes, body} =
     article.article;
 
   return (
     <main>
+      <section>
       <h2>{title}</h2>
       <img className="article-image" src={article_img_url} alt={title} />
       <div className="article-meta">
@@ -48,6 +49,10 @@ function Article() {
 
       <br />
       <p className="article-body">{body}</p>
+      </section>
+      <section className="comment-list">
+        <Comments/>
+      </section>
     </main>
   );
 }

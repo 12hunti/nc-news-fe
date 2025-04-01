@@ -61,7 +61,7 @@ header {
   border-radius: 10px;
 }
 
-.article-list{
+.article-list, .comment-list{
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -75,17 +75,24 @@ header {
   text-align: center;
 }
 
-.article-meta {
+.comment-list li {
+  background:var(--article-bg);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px;
+}
+
+.article-meta, .comment-meta {
   display:flex;
   align-items: center;
   gap: 10px;
 }
 
-.article-meta .votes {
+.votes {
   font-weight: bold;
 }
 
-.article-body {
+.article-body, .comment-body {
   text-align: left;
 }
 
