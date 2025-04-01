@@ -9,51 +9,37 @@ header {
   position: sticky;
   top: 0;
   max-width: 100%;
+  background-color: var(--background-color);
+  padding: 1rem
+}
+
+.logo, .avatar {
+  height: 6em;
   background-color: white;
   padding: 0rem;
 }
 
-.logo,
-.avatar {
-  height: 70%;
   padding: 0.5em;
   will-change: filter;
   transition: filter 300ms;
   position: absolute;
-  top: 0px;
+  top: 8px;
   border-radius: 50%;
 }
 
 .logo {
   left: 0%;
 }
-
 .avatar {
   right: 0%;
 }
-.logo:hover,
-.avatar:hover {
+.logo:hover, .avatar:hover {
   filter: drop-shadow(0 0 2em #01b0c7aa);
 }
-.logo.react:hover,
-.avatar.react:hover {
+.logo.react:hover, .avatar.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
 .card {
   padding: 2em;
@@ -86,8 +72,23 @@ header {
   gap: 20px;
 }
 .article-list li {
-  background: rgb(225, 247, 255);
+
+  background:var(--article-bg);
   padding: 15px;
   border-radius: 10px;
   text-align: center;
+}
+
+.article-meta {
+  display:flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.article-meta .votes {
+  font-weight: bold;
+}
+
+.article-body {
+  text-align: left;
 }
