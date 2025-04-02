@@ -22,24 +22,6 @@ export const getComments = (article_id) => {
   });
 };
 
-// export const patchArticle = (article_id, voteChange) => {
-//   const voteData = {
-//     inc_votes: voteChange,
-//   };
-//   return api.patch(`/articles/${article_id}`, voteData).then(({ data }) => {
-//     return data;
-//   });
-// };
-
-// export const patchComment = (comment_id, voteChange) => {
-//   const voteData = {
-//     inc_votes: voteChange,
-//   };
-//   return api.patch(`/comments/${comment_id}`, voteData).then(({ data }) => {
-//     return data;
-//   });
-// };
-
 export const patchItem = (itemType, item_id, voteChange) => {
   const voteData = {
     inc_votes: voteChange,
@@ -50,7 +32,4 @@ export const patchItem = (itemType, item_id, voteChange) => {
   })
 }
 
-// export const postComments = (article_id) => {
-//   return api.post(``)
-// }
 export default api;

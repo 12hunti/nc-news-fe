@@ -4,7 +4,7 @@ import Error from "./Error";
 import { useParams } from "react-router";
 import useApiRequest from "../hooks/useApiRequest";
 import Collapsible from "./Collapsible";
-import VoteButtons from "./VoteButtons";
+import VoteButtons from "./Votes";
 
 function CommentCard() {
   const { article_id } = useParams();
@@ -23,32 +23,28 @@ function CommentCard() {
     return <Error error={error} />;
   }
 
-  if (!comments) {
-    return <Loading />;
-  }
-
   return (
     <div>
-        <Collapsible contentDescriptor={'Comments'}>
-      <h3>Comments</h3>
-      {comments.comments.map((comment) => {
-        return (
-          <li key={comment.comment_id} >
-            <p className="comment-body">{comment.body}</p>
-            <div className="comment-meta">
-            <p>by {comment.author}</p>
-            <p>
-              {new Date(comment.created_at).toLocaleDateString("en-GB", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            </p>
-            <VoteButtons votes={comment.votes}/>
-            </div>
-          </li>
-        );
-      })}
+      <Collapsible contentDescriptor={"Comments"}>
+        <h3>Comments</h3>
+        {comments.comments.map((comment) => {
+          return (
+            <li key={comment.comment_id}>
+              <p className="comment-body">{comment.body}</p>
+              <div className="comment-meta">
+                <p>by {comment.author}</p>
+                <p>
+                  {new Date(comment.created_at).toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
+                <VoteButtons itemType="comments" votes={comment.votes} item_id={comment.comment_id}/>
+              </div>
+            </li>
+          );
+        })}
       </Collapsible>
     </div>
   );
