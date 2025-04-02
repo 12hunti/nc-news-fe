@@ -76,7 +76,7 @@ header {
 }
 
 .comment-list li {
-  background:var(--article-bg);
+  background:var(--comment-bg);
   border-radius: 10px;
   padding: 15px;
   margin: 15px;
