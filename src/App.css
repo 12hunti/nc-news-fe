@@ -76,7 +76,7 @@ header {
 }
 
 .comment-list li {
-  background:var(--article-bg);
+  background:var(--comment-bg);
   border-radius: 10px;
   padding: 15px;
   margin: 15px;
@@ -96,3 +96,21 @@ header {
   text-align: left;
 }
 
+.vote-button{
+  background-color: rgba(199, 239, 239, 0.851);
+}
+
+.button-img{
+  max-height: 15px;
+}
+
+.votes-meta {
+  display:flex;
+  align-items:baseline;
+  gap:5px;
+}
+
+.vote-button-container {
+  display: flex;
+  gap:5px;
+}

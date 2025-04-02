@@ -4,6 +4,7 @@ import Error from "./Error";
 import { useParams } from "react-router";
 import useApiRequest from "../hooks/useApiRequest";
 import Collapsible from "./Collapsible";
+import VoteButtons from "./VoteButtons";
 
 function CommentCard() {
   const { article_id } = useParams();
@@ -43,7 +44,7 @@ function CommentCard() {
                 year: "numeric",
               })}
             </p>
-            <p className="votes" >Votes: {comment.votes}</p>
+            <VoteButtons votes={comment.votes}/>
             </div>
           </li>
         );
