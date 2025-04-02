@@ -44,23 +44,23 @@ function PostAComment({ onNewComment }) {
   return (
     <div>
       <Collapsible showContent="+ Add a Comment" hideContent="X">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="body">
+        <form onSubmit={handleSubmit} className="form">
+          <label htmlFor="body" className= "label">
             <img
               className="small-avatar"
               src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
               alt="user avatar Mr Jelly"
             />
           </label>
-          <input
-            type="text"
+          <textarea
             id="body"
             name="body"
             placeholder="Write your comment here..."
             value={commentBody}
+            className="input"
             onChange={(event) => setCommentBody(event.target.value)}
-          ></input>
-          <button type="submit">Submit</button>
+          ></textarea>
+          <button type="submit" className="submit-button">Submit</button>
         </form>
       </Collapsible>
       {error && <p className="error">{error}</p>}
