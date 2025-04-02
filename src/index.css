@@ -58,6 +58,7 @@ button {
   background-color: var(--button-bg);
   cursor: pointer;
   transition: border-color 0.25s;
+  margin:0.5em;
 }
 button:hover {
   border-color:var(--button-border-hover);;

@@ -25,7 +25,7 @@ function CommentCard() {
 
   return (
     <div>
-      <Collapsible contentDescriptor={"Comments"}>
+      <Collapsible showContent={"View Comments"} hideContent={"Hide Comments"}>
         <h3>Comments</h3>
         {comments.comments.map((comment) => {
           return (

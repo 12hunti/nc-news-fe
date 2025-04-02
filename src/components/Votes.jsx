@@ -1,18 +1,29 @@
 import { useState } from "react";
 import { patchItem } from "../api";
+import Error from "./Error";
 
 function VoteButtons({ itemType, votes, item_id }) {
   const [vote, setVote] = useState(votes || 0);
   const [error, setError] = useState(null);
+  const [isVoting, setIsVoting] = useState(false);
 
   const handleVote = (voteChange) => {
     setVote((currentVotes) => currentVotes + voteChange);
     setError(null);
-    patchItem(itemType, item_id, voteChange).catch((err) => {
-      setVote((currentVotes) => currentVotes - voteChange);
-      setError("Your vote was not successful. Please try again.");
-    });
+    setIsVoting(true);
+    patchItem(itemType, item_id, voteChange)
+      .catch((err) => {
+        setVote((currentVotes) => currentVotes - voteChange);
+        setError("Your vote was not successful. Please try again.");
+      })
+      .finally(() => {
+        setIsVoting(false);
+      });
   };
+
+  if (error) {
+    return <Error error={error} />;
+  }
 
   return (
     <div className="votes-meta">

@@ -9,7 +9,7 @@ function Header() {
         <img className="logo" src="src/assets/NC News-.png" alt="NC News logo" />
       </Link>
       <Link to="profile">
-      <img className="avatar" src="src/assets/michael-dam-mEZ3PoFGs_k-unsplash.jpg" alt="user avatar dark haired women in red top" />
+      <img className="avatar" src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141" alt="user avatar Mr Jelly" />
       </Link>
       <Nav />
     </header>

@@ -1,10 +1,12 @@
-import { getArticle } from "../api";
+import { getArticle, getComments } from "../api";
 import Loading from "./Loading";
 import Error from "./Error";
 import { useParams } from "react-router";
 import useApiRequest from "../hooks/useApiRequest";
 import Comments from "./Comments";
 import VoteButtons from "./Votes";
+import PostAComment from "./PostComments";
+import { useEffect, useState } from "react";
 
 function Article() {
   const { article_id } = useParams();
@@ -15,16 +17,29 @@ function Article() {
     error,
   } = useApiRequest(getArticle, "Failed to load the article", article_id);
 
+  const [comments, setComments] = useState([])
+  const [isLoadingComments, setIsLoadingComments] = useState(true)
+
+  useEffect(() => {
+    getComments(article_id).then((data) => {
+      setComments(data.comments)
+    }).catch(() => {
+      setComments([])
+    }).finally(() => {
+      setIsLoadingComments(false)
+    })
+  }, [article_id])
+
+  const handleNewComment = (newComment) => {
+    setComments((currentComments) => [newComment, ...currentComments])
+  }
+
   if (isLoading) {
     return <Loading />;
   }
 
   if (error) {
     return <Error error={error} />;
-  }
-
-  if (!article) {
-    return <Loading />;
   }
 
   const { article_img_url, title, author, topic, votes, body } =
@@ -52,6 +67,9 @@ function Article() {
       </section>
       <section className="comment-list">
         <Comments />
+      </section>
+      <section >
+        <PostAComment onNewComment={handleNewComment}/>
       </section>
     </main>
   );
