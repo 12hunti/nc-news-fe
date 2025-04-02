@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Collapsible ({children, contentDescriptor}){
+function Collapsible ({children, showContent, hideContent}){
     const [visible, setVisible] = useState(false)
 
     const toggleView = () => {
@@ -9,7 +9,7 @@ function Collapsible ({children, contentDescriptor}){
     return (
         <div>
             <button type="button" onClick={toggleView}>
-                {visible ? `Hide ${contentDescriptor}` : `View ${contentDescriptor}`}
+                {visible ? `${hideContent}` : `${showContent}`}
             </button>
             {visible ? children : null}
         </div>

@@ -28,8 +28,19 @@ export const patchItem = (itemType, item_id, voteChange) => {
   };
   return api.patch(`/${itemType}/${item_id}`, voteData).then(({ data }) => {
     return data;
+  });
+};
 
-  })
-}
+export const postComment = (article_id, commentAuthor, commentBody) => {
+  const commentData = {
+    author: commentAuthor,
+    body: commentBody,
+  };
+  return api
+    .post(`/articles/${article_id}/comments`, commentData)
+    .then(({ data }) => {
+      return data;
+    });
+};
 
 export default api;
