@@ -11,7 +11,9 @@ function VoteButtons({votes}) {
   };
 
   return (
-    <div>
+    <div className="votes-meta">
+      <p className="votes">Votes: {vote}</p>
+      <div className="vote-button-container">
       <button type="button" className="vote-button" onClick={upVote}>
         <img
           className="button-img"
@@ -19,7 +21,6 @@ function VoteButtons({votes}) {
           alt="up Arrow"
         />
       </button>
-      <p className="votes">Votes: {vote}</p>
       <button type="button" className="vote-button" onClick={downVote}>
         <img
           className="button-img"
@@ -27,6 +28,7 @@ function VoteButtons({votes}) {
           alt="up Arrow"
         />
       </button>
+      </div>
     </div>
   );
 }

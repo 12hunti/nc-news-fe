@@ -38,7 +38,6 @@ function Article() {
         <div className="article-meta">
           <p>by {author}</p>
           <p>{topic}</p>
-          <p className="votes">Votes: {votes}</p>
         </div>
         <p className="article-meta">
           {new Date(article.article.created_at).toLocaleDateString("en-GB", {

@@ -103,3 +103,14 @@ header {
 .button-img{
   max-height: 15px;
 }
+
+.votes-meta {
+  display:flex;
+  align-items:baseline;
+  gap:5px;
+}
+
+.vote-button-container {
+  display: flex;
+  gap:5px;
+}
