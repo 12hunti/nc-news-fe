@@ -4,7 +4,7 @@ import Error from "./Error";
 import { useParams } from "react-router";
 import useApiRequest from "../hooks/useApiRequest";
 import Comments from "./Comments";
-import VoteButtons from "./VoteButtons";
+import VoteButtons from "./Votes";
 
 function Article() {
   const { article_id } = useParams();
@@ -46,7 +46,7 @@ function Article() {
             year: "numeric",
           })}
         </p>
-        <VoteButtons votes={votes}/>
+        <VoteButtons itemType="articles" votes={votes} item_id={article_id} />
         <br />
         <p className="article-body">{body}</p>
       </section>
