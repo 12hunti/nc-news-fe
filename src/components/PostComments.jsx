@@ -3,7 +3,6 @@ import Collapsible from "./Collapsible";
 import { postComment } from "../api";
 import { useState } from "react";
 import Loading from "./Loading";
-import Error from "./Error";
 
 function PostAComment({ onNewComment }) {
   const { article_id } = useParams();
@@ -26,7 +25,6 @@ function PostAComment({ onNewComment }) {
       })
       .catch((err) => {
         setError("Failed to post your comment. Please try again.");
-        //give option to add a comment if the error shows
       })
       .finally(() => {
         setIsPosting(false);
@@ -36,10 +34,6 @@ function PostAComment({ onNewComment }) {
   if (isPosting) {
     return <Loading />;
   }
-
-//   if (error) {
-//     return <Error error={error} />;
-//   }
 
   return (
     <div>

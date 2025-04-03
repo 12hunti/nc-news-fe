@@ -1,33 +1,34 @@
-import { getComments } from "../api";
-import Loading from "./Loading";
-import Error from "./Error";
-import { useParams } from "react-router";
-import useApiRequest from "../hooks/useApiRequest";
 import Collapsible from "./Collapsible";
 import VoteButtons from "./Votes";
+import DeleteComment from "./DeleteComment";
+import { useState } from "react";
 
-function CommentCard() {
-  const { article_id } = useParams();
+function Comments({ comments, setComments }) {
+  const [successMsg, setSuccessMsg] = useState("");
 
-  const {
-    data: comments,
-    isLoading,
-    error,
-  } = useApiRequest(getComments, "Failed to load comments", article_id);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  const handleDeleteComment = (commentID) => {
+  
+    setComments((currentComments) => {
+      return currentComments
+        .map((comment) => {
+          if (comment.comment_id === commentID) {
+            setSuccessMsg("Your comment was deleted.");
+            return null;
+          }
+          return comment;
+        })
+        .filter((comment) => comment !== null);
+    });
 
-  if (error) {
-    return <Error error={error} />;
-  }
+  };
 
   return (
     <div>
       <Collapsible showContent={"View Comments"} hideContent={"Hide Comments"}>
         <h3>Comments</h3>
-        {comments.comments.map((comment) => {
+        {successMsg && <p className="success">{successMsg}</p>}
+        {comments.map((comment) => {
           return (
             <li key={comment.comment_id}>
               <p className="comment-body">{comment.body}</p>
@@ -40,8 +41,18 @@ function CommentCard() {
                     year: "numeric",
                   })}
                 </p>
-                <VoteButtons itemType="comments" votes={comment.votes} item_id={comment.comment_id}/>
+                <VoteButtons
+                  itemType="comments"
+                  votes={comment.votes}
+                  item_id={comment.comment_id}
+                />
               </div>
+              {comment.author === "jessjelly" && (
+                <DeleteComment
+                  comment_id={comment.comment_id}
+                  onDeleteComment={handleDeleteComment}
+                />
+              )}
             </li>
           );
         })}
@@ -50,4 +61,4 @@ function CommentCard() {
   );
 }
 
-export default CommentCard;
+export default Comments;

@@ -66,7 +66,7 @@ function Article() {
         <p className="article-body">{body}</p>
       </section>
       <section className="comment-list">
-        <Comments />
+        <Comments comments ={comments} setComments={setComments}/>
       </section>
       <section >
         <PostAComment onNewComment={handleNewComment}/>
