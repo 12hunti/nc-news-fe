@@ -63,4 +63,11 @@ export const getTopics = () => {
   });
 };
 
+export const getUser = () => {
+  return api.get(`/users/jessjelly`).then(({data}) => {
+    console.log(data, "data in getUser in api")
+    return data.user
+  })
+}
+
 export default api;
