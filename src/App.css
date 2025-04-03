@@ -63,19 +63,19 @@ header {
   color: greenyellow;
 }
 
-.article-image {
+.article-image, .topic-image {
   width: 100%;
   border-radius: 10px;
 }
 
 .article-list,
-.comment-list {
+.comment-list, .topic-list {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
-.article-list li {
+.article-list li, .topic-list li {
   background: var(--article-bg);
   padding: 15px;
   border-radius: 10px;
