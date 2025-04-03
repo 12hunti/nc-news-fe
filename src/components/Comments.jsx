@@ -6,9 +6,7 @@ import { useState } from "react";
 function Comments({ comments, setComments }) {
   const [successMsg, setSuccessMsg] = useState("");
 
-
   const handleDeleteComment = (commentID) => {
-  
     setComments((currentComments) => {
       return currentComments
         .map((comment) => {
@@ -20,7 +18,6 @@ function Comments({ comments, setComments }) {
         })
         .filter((comment) => comment !== null);
     });
-
   };
 
   return (

@@ -18,7 +18,7 @@ function PostAComment({ onNewComment }) {
     setSuccessMsg("");
 
     postComment(article_id, "jessjelly", commentBody)
-      .then((newComment) => {
+      .then(({newComment}) => {
         setCommentBody("");
         setSuccessMsg("Your comment has been posted!");
         onNewComment(newComment);
@@ -39,7 +39,7 @@ function PostAComment({ onNewComment }) {
     <div>
       <Collapsible showContent="+ Add a Comment" hideContent="X">
         <form onSubmit={handleSubmit} className="form">
-          <label htmlFor="body" className= "label">
+          <label htmlFor="body" className="label">
             <img
               className="small-avatar"
               src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
@@ -54,12 +54,13 @@ function PostAComment({ onNewComment }) {
             className="input"
             onChange={(event) => setCommentBody(event.target.value)}
           ></textarea>
-          <button type="submit" className="submit-button">Submit</button>
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
         </form>
       </Collapsible>
       {error && <p className="error">{error}</p>}
       {successMsg && <p className="success">{successMsg}</p>}
-      
     </div>
   );
 }

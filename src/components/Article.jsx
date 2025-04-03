@@ -17,22 +17,27 @@ function Article() {
     error,
   } = useApiRequest(getArticle, "Failed to load the article", article_id);
 
-  const [comments, setComments] = useState([])
-  const [isLoadingComments, setIsLoadingComments] = useState(true)
+  const [comments, setComments] = useState([]);
+  const [isLoadingComments, setIsLoadingComments] = useState(true);
 
   useEffect(() => {
-    getComments(article_id).then((data) => {
-      setComments(data.comments)
-    }).catch(() => {
-      setComments([])
-    }).finally(() => {
-      setIsLoadingComments(false)
-    })
-  }, [article_id])
+    getComments(article_id)
+      .then((data) => {
+        setComments(data.comments);
+      })
+      .catch(() => {
+        setComments([]);
+      })
+      .finally(() => {
+        setIsLoadingComments(false);
+      });
+  }, [article_id]);
 
   const handleNewComment = (newComment) => {
-    setComments((currentComments) => [newComment, ...currentComments])
-  }
+    setComments((currentComments) => {
+      return [newComment, ...currentComments];
+    });
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -66,10 +71,10 @@ function Article() {
         <p className="article-body">{body}</p>
       </section>
       <section className="comment-list">
-        <Comments comments ={comments} setComments={setComments}/>
+        <Comments comments={comments} setComments={setComments} />
       </section>
-      <section >
-        <PostAComment onNewComment={handleNewComment}/>
+      <section>
+        <PostAComment onNewComment={handleNewComment} />
       </section>
     </main>
   );
