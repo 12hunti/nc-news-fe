@@ -43,4 +43,10 @@ export const postComment = (article_id, commentAuthor, commentBody) => {
     });
 };
 
+export const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`).then((response) => {
+    return response
+  })
+}
+
 export default api;

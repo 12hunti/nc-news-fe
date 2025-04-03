@@ -3,7 +3,6 @@ import Collapsible from "./Collapsible";
 import { postComment } from "../api";
 import { useState } from "react";
 import Loading from "./Loading";
-import Error from "./Error";
 
 function PostAComment({ onNewComment }) {
   const { article_id } = useParams();
@@ -19,14 +18,13 @@ function PostAComment({ onNewComment }) {
     setSuccessMsg("");
 
     postComment(article_id, "jessjelly", commentBody)
-      .then((newComment) => {
+      .then(({newComment}) => {
         setCommentBody("");
         setSuccessMsg("Your comment has been posted!");
         onNewComment(newComment);
       })
       .catch((err) => {
         setError("Failed to post your comment. Please try again.");
-        //give option to add a comment if the error shows
       })
       .finally(() => {
         setIsPosting(false);
@@ -37,15 +35,11 @@ function PostAComment({ onNewComment }) {
     return <Loading />;
   }
 
-//   if (error) {
-//     return <Error error={error} />;
-//   }
-
   return (
     <div>
       <Collapsible showContent="+ Add a Comment" hideContent="X">
         <form onSubmit={handleSubmit} className="form">
-          <label htmlFor="body" className= "label">
+          <label htmlFor="body" className="label">
             <img
               className="small-avatar"
               src="https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"
@@ -60,12 +54,13 @@ function PostAComment({ onNewComment }) {
             className="input"
             onChange={(event) => setCommentBody(event.target.value)}
           ></textarea>
-          <button type="submit" className="submit-button">Submit</button>
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
         </form>
       </Collapsible>
       {error && <p className="error">{error}</p>}
       {successMsg && <p className="success">{successMsg}</p>}
-      
     </div>
   );
 }
