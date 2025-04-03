@@ -44,6 +44,10 @@ header {
   border-radius: 50%;
 }
 
+.profile-avatar{
+  border-radius: 50%;
+}
+
 .nav {
   display: inline;
   list-style-type: none;
