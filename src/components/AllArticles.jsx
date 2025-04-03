@@ -43,7 +43,7 @@ function AllArticles() {
 
   return (
     <div>
-      <div>
+      <div className="sorting">
         <label>
           Sort By:
           <select
