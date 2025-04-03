@@ -10,6 +10,8 @@ function Topics() {
     isLoading,
     error,
   } = useApiRequest(getTopics, "Failed to load topics");
+
+
   if (isLoading) {
     return <Loading />;
   }
