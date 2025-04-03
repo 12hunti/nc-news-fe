@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -17,11 +16,11 @@ function AllArticles() {
   }
 
   return (
-    <div className="article-list">
+    <section className="article-list">
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}
-    </div>
+    </section>
   );
 }
 
