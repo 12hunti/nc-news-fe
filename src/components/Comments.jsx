@@ -43,13 +43,14 @@ function Comments({ comments, setComments }) {
                   votes={comment.votes}
                   item_id={comment.comment_id}
                 />
-              </div>
+              
               {comment.author === "jessjelly" && (
                 <DeleteComment
                   comment_id={comment.comment_id}
                   onDeleteComment={handleDeleteComment}
                 />
               )}
+              </div>
             </li>
           );
         })}
