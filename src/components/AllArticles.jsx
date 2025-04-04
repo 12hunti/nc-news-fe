@@ -4,6 +4,7 @@ import Error from "./Error";
 import ArticleCard from "./ArticleCard";
 import useApiRequest from "../hooks/useApiRequest";
 import { useLocation, useSearchParams } from "react-router";
+import ErrorPage from "./ErrorPage";
 
 function AllArticles() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,6 +42,11 @@ function AllArticles() {
     return <Error error={error} />;
   }
 
+  if(!articles && (topicSlug !== ("cooking" || "football" || "coding"))){
+    return <ErrorPage msg="Topic Not Found"/>
+  }
+  
+
   return (
     <div>
       <div className="sorting">
@@ -57,7 +63,6 @@ function AllArticles() {
         </label>
 
         <label>
-          {" "}
           Order:
           <select
             value={order}

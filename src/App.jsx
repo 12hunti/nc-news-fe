@@ -19,7 +19,7 @@ function App() {
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/articles/:article_id" element={<Article />} />
         <Route path="/topics" element={<Topics />} />
-        <Route path="*" element={<ErrorPage/>}/>
+        <Route path="*" element={<ErrorPage msg="Page Not Found"/>}/>
       </Routes>
       <Footer />
     </>

@@ -7,6 +7,7 @@ import Comments from "./Comments";
 import VoteButtons from "./Votes";
 import PostAComment from "./PostComments";
 import { useEffect, useState } from "react";
+import ErrorPage from "./ErrorPage";
 
 function Article() {
   const { article_id } = useParams();
@@ -47,8 +48,12 @@ function Article() {
     return <Error error={error} />;
   }
 
+  if(!article){
+    return <ErrorPage msg="Article Not Found"/>
+  }
+
   const { article_img_url, title, author, topic, votes, body } =
-    article.article;
+    article;
 
   return (
     <main>
@@ -60,7 +65,7 @@ function Article() {
          <Link to={"/topics"}><p>{topic}</p></Link> 
         </div>
         <p className="article-meta">
-          {new Date(article.article.created_at).toLocaleDateString("en-GB", {
+          {new Date(article.created_at).toLocaleDateString("en-GB", {
             day: "numeric",
             month: "long",
             year: "numeric",
