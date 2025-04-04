@@ -1,7 +1,7 @@
 import { getArticle, getComments } from "../api";
 import Loading from "./Loading";
 import Error from "./Error";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import useApiRequest from "../hooks/useApiRequest";
 import Comments from "./Comments";
 import VoteButtons from "./Votes";
@@ -57,7 +57,7 @@ function Article() {
         <img className="article-image" src={article_img_url} alt={title} />
         <div className="article-meta">
           <p>by {author}</p>
-          <p>{topic}</p>
+         <Link to={"/topics"}><p>{topic}</p></Link> 
         </div>
         <p className="article-meta">
           {new Date(article.article.created_at).toLocaleDateString("en-GB", {
