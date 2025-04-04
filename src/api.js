@@ -4,24 +4,32 @@ const api = axios.create({
   baseURL: "https://nc-news-be-3xer.onrender.com/api",
 });
 
-export const getArticles = (topicSlug, sortBy = "date", order="desc") => {
+export const getArticles = (topicSlug, sortBy = "date", order = "desc") => {
   return api
     .get("/articles", {
       params: {
         topic: topicSlug,
         sortBy: sortBy,
-        order: order
+        order: order,
       },
     })
     .then(({ data }) => {
-      return data;
+      return data.articles;
+    })
+    .catch((err) => {
+      console.log(err)
     });
 };
 
 export const getArticle = (article_id) => {
-  return api.get(`/articles/${article_id}`).then(({ data }) => {
-    return data;
-  });
+  return api
+    .get(`/articles/${article_id}`)
+    .then(({ data }) => {
+      return data.article;
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 };
 
 export const getComments = (article_id) => {
@@ -64,10 +72,9 @@ export const getTopics = () => {
 };
 
 export const getUser = () => {
-  return api.get(`/users/jessjelly`).then(({data}) => {
-    console.log(data, "data in getUser in api")
-    return data.user
-  })
-}
+  return api.get(`/users/jessjelly`).then(({ data }) => {
+    return data.user;
+  });
+};
 
 export default api;

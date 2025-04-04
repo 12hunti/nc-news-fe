@@ -43,6 +43,7 @@ function Comments({ comments, setComments }) {
                   votes={comment.votes}
                   item_id={comment.comment_id}
                 />
+
               
               {comment.author === "jessjelly" && (
                 <DeleteComment
@@ -54,6 +55,9 @@ function Comments({ comments, setComments }) {
             </li>
           );
         })}
+        {comments.length === 0 && (
+          <p>No comments for this article</p>
+        )}
       </Collapsible>
     </div>
   );

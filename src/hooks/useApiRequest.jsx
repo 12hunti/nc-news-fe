@@ -10,7 +10,7 @@ const useApiRequest = (apiFunction, errorMessage, ...args) => {
     setError(null);
     apiFunction(...args)
       .then((response) => {
-        setData(response.articles || response);
+        setData( response);
       })
       .catch((err) => {
         console.log(err);
