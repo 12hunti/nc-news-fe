@@ -53,6 +53,7 @@ function PostAComment({ onNewComment }) {
             value={commentBody}
             className="input"
             onChange={(event) => setCommentBody(event.target.value)}
+            required
           ></textarea>
           <button type="submit" className="submit-button">
             Submit
