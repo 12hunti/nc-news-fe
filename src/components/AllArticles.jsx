@@ -42,6 +42,10 @@ function AllArticles() {
     return <Error error={error} />;
   }
 
+  if(!articles && !topicSlug && (sortBy !==("asc" || "desc"))){
+    return <ErrorPage msg="Invalid Sort Order"/>
+  }
+
   if(!articles && (topicSlug !== ("cooking" || "football" || "coding"))){
     return <ErrorPage msg="Topic Not Found"/>
   }
